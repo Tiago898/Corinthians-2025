@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Club Corinthians Paulista - História e Glórias</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #000000, #333333);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #ffffff;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #333333, #555555);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .player-card:hover {
+            border-color: rgba(255,255,255,0.5);
+            transform: scale(1.05);
+        }
+
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #333333, #666666);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 3px solid #ffffff;
+        }
+
+        .titles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .title-card {
+            background: linear-gradient(45deg, #1a1a1a, #333333);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border-left: 5px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .title-card:hover {
+            background: linear-gradient(45deg, #333333, #555555);
+            transform: translateX(10px);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #ffffff, #666666);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: calc(50% + 2rem);
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #000000;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            color: #000000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .nav-buttons { flex-direction: column; align-items: center; }
+            .container { padding: 1rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { padding-left: 50px !important; padding-right: 1rem !important; text-align: left !important; }
+            .timeline-dot { left: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">⚽</div>
+        <h1>Sport Club Corinthians Paulista</h1>
+        <p>Vai Corinthians! 🖤🤍</p>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('historia')">História</button>
+            <button class="nav-btn" onclick="showSection('jogadores')">Jogadores</button>
+            <button class="nav-btn" onclick="showSection('titulos')">Títulos</button>
+            <button class="nav-btn" onclick="showSection('jogadas')">Jogadas Históricas</button>
+            <button class="nav-btn" onclick="showSection('estadio')">Estádio</button>
+            <button class="nav-btn" onclick="showSection('2025')">Corinthians 2025</button>
+            <button class="nav-btn" onclick="showSection('curiosidades')">Curiosidades</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- História -->
+        <section id="historia" class="section active">
+            <div class="card">
+                <h2>🏛️ História do Timão</h2>
+                <p>Fundado em <span class="highlight">1º de setembro de 1910</span>, o Sport Club Corinthians Paulista nasceu no bairro do Bom Retiro, em São Paulo, por um grupo de operários liderados por Joaquim Ambrósio.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1910 - Fundação</h3>
+                        <p>Criado por cinco operários no bairro do Bom Retiro. O nome foi inspirado no Corinthian FC da Inglaterra.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1914 - Primeiro Título</h3>
+                        <p>Conquista do primeiro Campeonato Paulista, apenas 4 anos após a fundação.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1977 - Democracia Corinthiana</h3>
+                        <p>Movimento revolucionário que democratizou as decisões do clube durante a ditadura militar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2012 - Mundial de Clubes</h3>
+                        <p>Conquista do título mundial, derrotando o Chelsea por 1x0 no Japão.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number">30</span>
+                    <div class="stat-label">Campeonatos Paulistas</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">7</span>
+                    <div class="stat-label">Campeonatos Brasileiros</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3</span>
+                    <div class="stat-label">Libertadores</div>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">1</span>
+                    <div class="stat-label">Mundial de Clubes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jogadores -->
+        <section id="jogadores" class="section">
+            <div class="card">
+                <h2>⭐ Curiosidades dos Jogadores</h2>
+                <p>Conheça fatos interessantes sobre os ídolos corintianos de todos os tempos!</p>
+            </div>
+
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-avatar">🏆</div>
+                    <h3>Sócrates</h3>
+                    <p><strong>Curiosidade:</strong> Era médico formado e líder da Democracia Corinthiana. Fumava durante os jogos e tinha um QI de 135!</p>
+                    <p><strong>Posição:</strong> Meio-campo</p>
+                    <p><strong>Período:</strong> 1978-1984</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">👑</div>
+                    <h3>Ronaldo Fenômeno</h3>
+                    <p><strong>Curiosidade:</strong> Começou no Corinthians aos 16 anos pesando apenas 68kg. Fez 44 gols em 47 jogos na primeira passagem!</p>
+                    <p><strong>Posição:</strong> Atacante</p>
+                    <p><strong>Período:</strong> 1993-1994, 2009-2011</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">🎯</div>
+                    <h3>Cássio</h3>
+                    <p><strong>Curiosidade:</strong> Defendeu 3 pênaltis na final da Libertadores 2012. É conhecido como "São Cássio" pela torcida!</p>
+                    <p><strong>Posição:</strong> Goleiro</p>
+                    <p><strong>Período:</strong> 2012-2023</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">⚡</div>
+                    <h3>Marcelinho Carioca</h3>
+                    <p><strong>Curiosidade:</strong> Especialista em faltas, converteu mais de 60 gols de falta pelo Corinthians. Tinha um ritual antes de cada cobrança!</p>
+                    <p><strong>Posição:</strong> Meio-campo</p>
+                    <p><strong>Período:</strong> 1994-2001, 2004-2005</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">🛡️</div>
+                    <h3>Vampeta</h3>
+                    <p><strong>Curiosidade:</strong> Seu apelido vem de "Vampiro" devido aos dentes. Era conhecido pela garra e nunca desistia de uma jogada!</p>
+                    <p><strong>Posição:</strong> Volante</p>
+                    <p><strong>Período:</strong> 1997-2002</p>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-avatar">🔥</div>
+                    <h3>Emerson Sheik</h3>
+                    <p><strong>Curiosidade:</strong> Fez o gol do título da Libertadores 2012 e do Mundial. Seu nome real é Emerson Pereira de Souza!</p>
+                    <p><strong>Posição:</strong> Atacante</p>
+                    <p><strong>Período:</strong> 2011-2014</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Títulos -->
+        <section id="titulos" class="section">
+            <div class="card">
+                <h2>🏆 Principais Títulos</h2>
+                <p>O Corinthians é um dos clubes mais vitoriosos do Brasil e do mundo!</p>
+            </div>
+
+            <div class="titles-grid">
+                <div class="title-card">
+                    <h3>🌍 Mundial de Clubes</h3>
+                    <p><strong>2012</strong></p>
+                    <p>Corinthians 1x0 Chelsea</p>
+                    <small>Gol de Paolo Guerrero</small>
+                </div>
+
+                <div class="title-card">
+                    <h3>🏆 Copa Libertadores</h3>
+                    <p><strong>1999, 2012</strong></p>
+                    <p>Invicto em 2012</p>
+                    <small>14 vitórias e 4 empates</small>
+                </div>
+
+                <div class="title-card">
+                    <h3>🇧🇷 Campeonato Brasileiro</h3>
+                    <p><strong>1990, 1998, 1999, 2005, 2011, 2015, 2017</strong></p>
+                    <p>7 títulos nacionais</p>
+                    <small>Hexa em 2017</small>
+                </div>
+
+                <div class="title-card">
+                    <h3>🏟️ Campeonato Paulista</h3>
+                    <p><strong>30 títulos</strong></p>
+                    <p>Último: 2019</p>
+                    <small>Maior campeão paulista</small>
+                </div>
+
+                <div class="title-card">
+                    <h3>🏆 Copa do Brasil</h3>
+                    <p><strong>1995, 2002, 2009</strong></p>
+                    <p>3 conquistas</p>
+                    <small>Invicto em 2009</small>
+                </div>
+
+                <div class="title-card">
+                    <h3>🌎 Recopa Sul-Americana</h3>
+                    <p><strong>2013</strong></p>
+                    <p>Corinthians 2x0 São Paulo</p>
+                    <small>Clássico histórico</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jogadas Históricas -->
+        <section id="jogadas" class="section">
+            <div class="card">
+                <h2>⚡ Jogadas Históricas</h2>
+                <p>Momentos que ficaram eternizados na memória da Fiel Torcida!</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Gol do Guerrero - Mundial 2012</h3>
+                <p>Aos 69 minutos da final contra o Chelsea, Paolo Guerrero recebeu passe de Danilo e finalizou no canto direito de Petr Čech. O gol que deu o título mundial ao Corinthians!</p>
+                <p><strong>Data:</strong> 16 de dezembro de 2012</p>
+                <p><strong>Local:</strong> Yokohama, Japão</p>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Falta do Marcelinho Carioca</h3>
+                <p>Na final do Paulista de 1999, Marcelinho cobrou falta magistral no ângulo, sem chances para o goleiro. Uma das cobranças mais bonitas da história do futebol!</p>
+                <p><strong>Data:</strong> 27 de junho de 1999</p>
+                <p><strong>Adversário:</strong> São Paulo</p>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Gol do Sheik - Libertadores 2012</h3>
+                <p>Na final da Libertadores contra o Boca Juniors, Emerson Sheik fez o gol da vitória no Pacaembu, garantindo a classificação para o Mundial!</p>
+                <p><strong>Data:</strong> 4 de julho de 2012</p>
+                <p><strong>Local:</strong> Pacaembu, São Paulo</p>
+            </div>
+
+            <div class="card">
+                <h3>⚽ Gol de bicicleta do Ronaldo</h3>
+                <p>Em 1994, ainda jovem, Ronaldo fez um gol de bicicleta espetacular que já mostrava o talento que o levaria a ser o melhor do mundo!</p>
+                <p><strong>Ano:</strong> 1994</p>
+                <p><strong>Competição:</strong> Campeonato Paulista</p>
+            </div>
+
+            <div class="card">
+                <h3>🛡️ Defesas do Cássio na Libertadores</h3>
+                <p>Na semifinal contra o Santos, Cássio fez defesas impossíveis, incluindo uma em chute do Neymar que parecia gol certo. Performance lendária!</p>
+                <p><strong>Data:</strong> 2012</p>
+                <p><strong>Competição:</strong> Copa Libertadores</p>
+            </div>
+        </section>
+
+        <!-- Estádio -->
+        <section id="estadio" class="section">
+            <div class="card">
+                <h2>🏟️ Neo Química Arena</h2>
+                <p>Conheça todos os detalhes da casa do Corinthians, um dos estádios mais modernos do mundo!</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Dados Técnicos</h3>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-number">49.205</span>
+                        <div class="stat-label">Capacidade Total</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">2014</span>
+                        <div class="stat-label">Ano de Inauguração</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1.3</span>
+                        <div class="stat-label">Bilhões Investidos (R$)</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">210</span>
+                        <div class="stat-label">Metros de Comprimento</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🏗️ Construção e História</h3>
+                <p>A Neo Química Arena foi construída especialmente para a <span class="highlight">Copa do Mundo FIFA de 2014</span>, sendo palco do jogo de abertura entre Brasil e Croácia. O projeto arquitetônico é assinado pelo escritório Coop Himmelb(l)au da Áustria.</p>
+                <p>Localizada no bairro de Itaquera, zona leste de São Paulo, o estádio foi erguido no mesmo local onde ficava o antigo Estádio Alfredo Schürig, demolido em 2010.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Características Únicas</h3>
+                <div class="players-grid">
+                    <div class="player-card">
+                        <div class="player-avatar">🏗️</div>
+                        <h4>Arquitetura Moderna</h4>
+                        <p>Design futurista com fachada metálica perfurada que permite ventilação natural e cria um visual único no mundo do futebol.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🌱</div>
+                        <h4>Sustentabilidade</h4>
+                        <p>Sistema de captação de água da chuva, painéis solares e materiais recicláveis foram utilizados na construção.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">📱</div>
+                        <h4>Tecnologia</h4>
+                        <p>Wi-Fi gratuito em todo o estádio, telões de LED de alta definição e sistema de som de última geração.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">♿</div>
+                        <h4>Acessibilidade</h4>
+                        <p>Totalmente acessível com rampas, elevadores e espaços especiais para cadeirantes e pessoas com mobilidade reduzida.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🎪 Setores e Experiências</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Arquibancadas</h4>
+                            <p>Divididas em Norte, Sul, Leste e Oeste, com a torcida organizada concentrada no setor Norte, criando uma atmosfera única.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Camarotes Premium</h4>
+                            <p>69 camarotes de luxo com vista privilegiada, serviço de gastronomia e ar-condicionado para uma experiência VIP.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Cadeiras Especiais</h4>
+                            <p>Setores com cadeiras numeradas e cobertura, oferecendo conforto superior para os torcedores.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Espaços Gastronômicos</h4>
+                            <p>Mais de 50 pontos de venda de alimentos e bebidas, incluindo restaurantes temáticos e lanchonetes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Jogos Históricos</h3>
+                <div class="title-card">
+                    <h4>🌍 Abertura da Copa do Mundo 2014</h4>
+                    <p><strong>12 de junho de 2014</strong></p>
+                    <p>Brasil 3x1 Croácia - Primeiro jogo oficial do estádio</p>
+                    <small>Gols de Neymar (2) e Oscar para o Brasil</small>
+                </div>
+                <div class="title-card">
+                    <h4>⚽ Primeiro Gol Corinthiano</h4>
+                    <p><strong>18 de maio de 2014</strong></p>
+                    <p>Corinthians 1x0 Figueirense - Gol de Paolo Guerrero</p>
+                    <small>Primeiro gol do Timão na nova casa</small>
+                </div>
+                <div class="title-card">
+                    <h4>🏆 Final do Paulista 2018</h4>
+                    <p><strong>8 de abril de 2018</strong></p>
+                    <p>Corinthians 2x1 Palmeiras - Conquista do título</p>
+                    <small>Gols de Jadson e Rodriguinho</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🚇 Como Chegar</h3>
+                <p><strong>Metrô:</strong> Estação Corinthians-Itaquera (Linha 3-Vermelha) - Saída direta para o estádio</p>
+                <p><strong>Trem:</strong> Estação Corinthians-Itaquera (CPTM Linha 11-Coral)</p>
+                <p><strong>Ônibus:</strong> Diversas linhas municipais e intermunicipais</p>
+                <p><strong>Carro:</strong> Estacionamento com 2.000 vagas no próprio complexo</p>
+            </div>
+
+            <div class="card">
+                <h3>🎫 Informações para Visitantes</h3>
+                <div class="players-grid">
+                    <div class="player-card">
+                        <div class="player-avatar">🎟️</div>
+                        <h4>Ingressos</h4>
+                        <p>Vendas online pelo site oficial e pontos físicos credenciados. Preços variam conforme o setor e importância do jogo.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🛍️</div>
+                        <h4>Loja Oficial</h4>
+                        <p>Megastore com produtos oficiais do Corinthians, localizada no próprio estádio com mais de 1.000m².</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🏛️</div>
+                        <h4>Memorial</h4>
+                        <p>Espaço dedicado à história do clube com troféus, camisas históricas e momentos marcantes do Timão.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🎯</div>
+                        <h4>Tours</h4>
+                        <p>Visitas guiadas pelos bastidores, vestiários, campo e áreas VIP nos dias sem jogos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corinthians 2025 -->
+        <section id="2025" class="section">
+            <div class="card">
+                <h2>🚀 Corinthians 2025 - O Futuro é Agora!</h2>
+                <p>Tudo sobre o Timão em 2025: elenco renovado, projetos ambiciosos e objetivos para conquistar ainda mais títulos!</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Objetivos para 2025</h3>
+                <div class="titles-grid">
+                    <div class="title-card">
+                        <h4>🏆 Campeonato Paulista</h4>
+                        <p>Reconquistar o título estadual após 6 anos</p>
+                        <small>Última conquista: 2019</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>🇧🇷 Campeonato Brasileiro</h4>
+                        <p>Brigar pelo octacampeonato nacional</p>
+                        <small>Voltar ao topo do futebol brasileiro</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>🏆 Copa do Brasil</h4>
+                        <p>Conquistar o 4º título da competição</p>
+                        <small>Última conquista: 2009</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>🌎 Copa Sul-Americana</h4>
+                        <p>Primeira conquista da competição</p>
+                        <small>Novo desafio internacional</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>⭐ Elenco 2025 - Principais Jogadores</h3>
+                <div class="players-grid">
+                    <div class="player-card">
+                        <div class="player-avatar">🥅</div>
+                        <h4>Hugo Souza</h4>
+                        <p><strong>Posição:</strong> Goleiro</p>
+                        <p><strong>Idade:</strong> 25 anos</p>
+                        <p>Contratado para ser o novo dono da meta corintiana após a saída de Cássio.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🛡️</div>
+                        <h4>Félix Torres</h4>
+                        <p><strong>Posição:</strong> Zagueiro</p>
+                        <p><strong>Idade:</strong> 27 anos</p>
+                        <p>Líder da defesa e capitão da seleção equatoriana.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">⚡</div>
+                        <h4>Memphis Depay</h4>
+                        <p><strong>Posição:</strong> Atacante</p>
+                        <p><strong>Idade:</strong> 31 anos</p>
+                        <p>Contratação bombástica! Ex-Barcelona e seleção holandesa.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🎯</div>
+                        <h4>Yuri Alberto</h4>
+                        <p><strong>Posição:</strong> Atacante</p>
+                        <p><strong>Idade:</strong> 24 anos</p>
+                        <p>Artilheiro do time e esperança de gols para 2025.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🏃</div>
+                        <h4>Rodrigo Garro</h4>
+                        <p><strong>Posição:</strong> Meio-campo</p>
+                        <p><strong>Idade:</strong> 26 anos</p>
+                        <p>Maestro do meio-campo, responsável pela criação de jogadas.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🔥</div>
+                        <h4>Igor Coronado</h4>
+                        <p><strong>Posição:</strong> Meio-campo</p>
+                        <p><strong>Idade:</strong> 32 anos</p>
+                        <p>Experiência e qualidade técnica no meio-campo corintiano.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>👨‍💼 Comissão Técnica 2025</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Ramón Díaz - Técnico Principal</h4>
+                            <p>Experiente treinador argentino com passagens vitoriosas por grandes clubes. Conhecido por seu futebol ofensivo e organização tática.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Emiliano Díaz - Auxiliar Técnico</h4>
+                            <p>Filho de Ramón Díaz, trabalha em parceria com o pai trazendo modernidade e análise de dados para o futebol corintiano.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Preparação Física Renovada</h4>
+                            <p>Nova comissão técnica focada em alta performance e prevenção de lesões, utilizando tecnologia de ponta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>💰 Investimentos e Projetos 2025</h3>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-number">150</span>
+                        <div class="stat-label">Milhões Investidos (R$)</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">8</span>
+                        <div class="stat-label">Novas Contratações</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">3</span>
+                        <div class="stat-label">Renovações Importantes</div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">2025</span>
+                        <div class="stat-label">Ano da Virada</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🏗️ Projetos de Infraestrutura 2025</h3>
+                <div class="players-grid">
+                    <div class="player-card">
+                        <div class="player-avatar">🏟️</div>
+                        <h4>Melhorias na Arena</h4>
+                        <p>Reformas nos vestiários, modernização dos sistemas de som e novas áreas VIP para melhorar a experiência dos torcedores.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">🏃‍♂️</div>
+                        <h4>CT Dr. Joaquim Grava</h4>
+                        <p>Ampliação do centro de treinamento com novos campos, academia de última geração e centro médico modernizado.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">👶</div>
+                        <h4>Base Renovada</h4>
+                        <p>Investimento pesado nas categorias de base com novos técnicos, estrutura e metodologia de formação de atletas.</p>
+                    </div>
+                    <div class="player-card">
+                        <div class="player-avatar">📱</div>
+                        <h4>Tecnologia</h4>
+                        <p>Implementação de análise de dados, GPS nos treinos e aplicativo oficial renovado para os torcedores.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📅 Calendário 2025 - Principais Datas</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Janeiro - Pré-temporada</h4>
+                            <p>Apresentação do elenco, treinos intensivos e jogos-treino para preparação da temporada.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Janeiro/Abril - Paulistão</h4>
+                            <p>Campeonato Paulista 2025 - objetivo de chegar à final e reconquistar o título estadual.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Abril/Dezembro - Brasileirão</h4>
+                            <p>Campeonato Brasileiro 2025 - meta de ficar entre os 4 primeiros e voltar à Libertadores.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Março/Setembro - Copa do Brasil</h4>
+                            <p>Competição mata-mata onde o Corinthians busca sua 4ª conquista da competição nacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Metas e Expectativas</h3>
+                <p><strong>🏆 Esportivas:</strong> Conquistar pelo menos 1 título em 2025, classificar-se para a Libertadores 2026 e desenvolver jovens talentos da base.</p>
+                <p><strong>💰 Financeiras:</strong> Equilibrar as contas, aumentar receitas com patrocínios e melhorar a gestão financeira do clube.</p>
+                <p><strong>👥 Sociais:</strong> Fortalecer o relacionamento com a torcida, expandir projetos sociais e modernizar a comunicação digital.</p>
+                <p><strong>🌟 Institucional:</strong> Consolidar o Corinthians como uma das maiores marcas do futebol mundial e referência em gestão esportiva.</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Projeções para 2025</h3>
+                <div class="titles-grid">
+                    <div class="title-card">
+                        <h4>🎯 Classificação Brasileirão</h4>
+                        <p><strong>Meta: Top 4</strong></p>
+                        <p>Vaga na Libertadores 2026</p>
+                        <small>Retorno à elite continental</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>⚽ Gols Marcados</h4>
+                        <p><strong>Meta: 70+ gols</strong></p>
+                        <p>Futebol mais ofensivo</p>
+                        <small>Com Memphis e Yuri Alberto</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>🏠 Aproveitamento Casa</h4>
+                        <p><strong>Meta: 80%</strong></p>
+                        <p>Arena como fortaleza</p>
+                        <small>Apoio da Fiel Torcida</small>
+                    </div>
+                    <div class="title-card">
+                        <h4>👶 Revelações da Base</h4>
+                        <p><strong>Meta: 3 jogadores</strong></p>
+                        <p>Promover jovens talentos</p>
+                        <small>Futuro do clube</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curiosidades -->
+        <section id="curiosidades" class="section">
+            <div class="card">
+                <h2>🤔 Curiosidades do Timão</h2>
+                <p>Fatos interessantes e histórias únicas sobre o Sport Club Corinthians Paulista!</p>
+            </div>
+
+            <div class="card">
+                <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Origem do Nome</h3>
+                <p>O nome "Corinthians" foi inspirado no Corinthian Football Club da Inglaterra, que fez uma excursão ao Brasil em 1910. Os fundadores ficaram impressionados com o fair play da equipe inglesa!</p>
+            </div>
+
+            <div class="card">
+                <h3>🎭 A Democracia Corinthiana</h3>
+                <p>Entre 1982 e 1984, o Corinthians viveu um período único no futebol mundial: todas as decisões eram tomadas democraticamente pelos jogadores, incluindo escalação e táticas. Sócrates era o líder do movimento!</p>
+            </div>
+
+            <div class="card">
+                <h3>🏟️ Arena Corinthians</h3>
+                <p>O estádio foi inaugurado em 2014 para a Copa do Mundo. Tem capacidade para 49.205 pessoas e custou R$ 1,3 bilhão. Foi palco da abertura da Copa do Mundo FIFA de 2014!</p>
+            </div>
+
+            <div class="card">
+                <h3>👥 Maior Torcida do Brasil</h3>
+                <p>Segundo pesquisas, o Corinthians possui a maior torcida do Brasil, com mais de 30 milhões de torcedores espalhados pelo país. A "Fiel" é conhecida mundialmente!</p>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Jejum de 23 Anos</h3>
+                <p>O Corinthians ficou 23 anos sem conquistar o Campeonato Paulista (1954-1977). Quando finalmente quebrou o jejum em 1977, a festa durou dias nas ruas de São Paulo!</p>
+            </div>
+
+            <div class="card">
+                <h3>⚽ Primeiro Gol da História</h3>
+                <p>O primeiro gol oficial da história do Corinthians foi marcado por Joaquim Ambrósio, um dos fundadores do clube, em 1910, contra o União da Lapa!</p>
+            </div>
+
+            <div class="card">
+                <h3>🎵 Hino Oficial</h3>
+                <p>O hino do Corinthians foi composto em 1922 por Antônio Pecci Filho (Toquinho) e tem uma das melodias mais reconhecidas do futebol brasileiro. "Salve o Corinthians, o campeão dos campeões!"</p>
+            </div>
+
+            <div class="card">
+                <h3>🌟 Invasão Corintiana</h3>
+                <p>Em 1976, mais de 70 mil corintianos viajaram ao Rio de Janeiro para a final contra o Fluminense. Foi a maior invasão de torcedores da história do futebol brasileiro!</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Remove active class from all sections and buttons
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to selected section and button
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.card, .player-card, .title-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Animate stats on scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber) {
+                            const finalNumber = parseInt(statNumber.textContent);
+                            let currentNumber = 0;
+                            const increment = finalNumber / 30;
+                            
+                            const timer = setInterval(() => {
+                                currentNumber += increment;
+                                if (currentNumber >= finalNumber) {
+                                    statNumber.textContent = finalNumber;
+                                    clearInterval(timer);
+                                } else {
+                                    statNumber.textContent = Math.floor(currentNumber);
+                                }
+                            }, 50);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat-box').forEach(box => {
+                observer.observe(box);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a5c77d07d9c20f',t:'MTc1OTc2MDIxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
